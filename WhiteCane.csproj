@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net6.0-android;net6.0-ios;</TargetFrameworks>
+		<TargetFrameworks>net7.0-android;net7.0-ios;</TargetFrameworks>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -10,26 +10,28 @@
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Title>WhiteCane</Title>
 		<Authors>BruceTheBrick</Authors>
-		<PackageIcon>Assets\Whitecanae_logo.png</PackageIcon>
+		<PackageIcon>Whitecane_logo.png</PackageIcon>
 		<PackageProjectUrl>https://www.nuget.org/packages/WhiteCane/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/BruceTheBrick/Whitecane</RepositoryUrl>
+		<Description>WhiteCane provides a wide range of features to allow developers to more easily enable accessibility in their applications.</Description>
+		<PackageTags>accessibility ally a11y</PackageTags>
 	</PropertyGroup>
 	
 	<ItemGroup>
 		<Compile Remove="Platforms\**"/>
+		<None Include="Assets\Whitecane_logo.png" Pack="true" PackagePath="Whitecane_logo.png"/>
 	</ItemGroup>
 	
 	<!--IOS-->
-	<ItemGroup Condition="$(TargetFramework) == 'net6.0-ios'">
+	<ItemGroup Condition="$(TargetFramework) == 'net7.0-ios'">
 		<Compile Include="Platforms/iOS/**"/>
 	</ItemGroup>
-	<PropertyGroup Condition="$(TargetFramework) == 'net6.0-ios'">
+	<PropertyGroup Condition="$(TargetFramework) == 'net7.0-ios'">
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 	<!--ANDROID-->
-	<ItemGroup Condition="$(TargetFramework) == 'net6.0-android'">
+	<ItemGroup Condition="$(TargetFramework) == 'net7.0-android'">
 		<Compile Include="Platforms/Android/**"/>
 	</ItemGroup>
-
 </Project>
