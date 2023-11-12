@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net7.0-android;net7.0-ios;</TargetFrameworks>
+		<TargetFrameworks>net7.0;net7.0-android;net7.0-ios;</TargetFrameworks>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -16,7 +16,7 @@
 		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Description>WhiteCane provides a wide range of features to allow developers to more easily enable accessibility in their applications.</Description>
 		<PackageTags>accessibility ally a11y</PackageTags>
-		<Version>1.0.2</Version>
+		<Version>1.0.3</Version>
 	</PropertyGroup>
 	
 	<ItemGroup>
@@ -27,14 +27,11 @@
 	
 	<!--IOS-->
 	<ItemGroup Condition="$(TargetFramework) == 'net7.0-ios'">
-		<Compile Include="Platforms/iOS/**"/>
+		<Compile Include="Platforms\iOS\**"/>
 	</ItemGroup>
-	<PropertyGroup Condition="$(TargetFramework) == 'net7.0-ios'">
-		<ImplicitUsings>enable</ImplicitUsings>
-	</PropertyGroup>
 
 	<!--ANDROID-->
 	<ItemGroup Condition="$(TargetFramework) == 'net7.0-android'">
-		<Compile Include="Platforms/Android/**"/>
+		<Compile Include="Platforms\Android\**"/>
 	</ItemGroup>
 </Project>
