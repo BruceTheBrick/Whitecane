@@ -2,7 +2,7 @@
 
 namespace WhiteCane.Droid.Effects;
 
-public class AccessibilityTraitsEffect : TraitsEffect
+internal class AccessibilityTraitsEffect : TraitsEffect
 {
     private Android.Views.View _view;
     protected override void OnAttached()

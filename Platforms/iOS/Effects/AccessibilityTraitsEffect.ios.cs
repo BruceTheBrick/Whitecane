@@ -3,7 +3,7 @@ using WhiteCane.Effects;
 
 namespace WhiteCane.iOS.Effects;
 
-public class AccessibilityTraitsEffect : TraitsEffect
+internal class AccessibilityTraitsEffect : TraitsEffect
 {
     private UIView _view;
     protected override void OnAttached()

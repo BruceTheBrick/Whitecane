@@ -3,7 +3,7 @@ using WhiteCane.Core;
 
 namespace WhiteCane.Effects;
 
-public abstract class TraitsEffect : PlatformEffect
+internal abstract class TraitsEffect : PlatformEffect
 {
     protected abstract void SetTraits();
 
