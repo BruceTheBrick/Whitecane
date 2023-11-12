@@ -1,5 +1,6 @@
 ﻿namespace WhiteCane.Core;
 
+[Flags]
 public enum Traits
 {
     None = 0,

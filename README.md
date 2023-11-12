@@ -1,3 +1,5 @@
+<img src="/Assets/Whitecane_logo.png?raw=true" alt="WhiteCane Logo" width="150px" height="150px"/>
+
 # WhiteCane
 WhiteCane is an open-source .NET package that aims to assist developers in creating accessible applications
 that can be used by everyone.
@@ -5,8 +7,8 @@ that can be used by everyone.
 ## Documentation
 
 ## Getting Started
-WhiteCane follows the standard ```MauiApplicationBuilder``` extensions. To get started, be sure to call the extension
-method from ```MauiProgram.cs``` like so:
+WhiteCane follows the standard `MauiApplicationBuilder` extensions. To get started, be sure to call the extension
+method from `MauiProgram.cs` like so:
 ```csharp
 using WhiteCane;
 
