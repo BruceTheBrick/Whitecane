@@ -13,6 +13,7 @@
 		<PackageIcon>Whitecane_logo.png</PackageIcon>
 		<PackageProjectUrl>https://www.nuget.org/packages/WhiteCane/</PackageProjectUrl>
 		<RepositoryUrl>https://github.com/BruceTheBrick/Whitecane</RepositoryUrl>
+		<PackageReadmeFile>README.md</PackageReadmeFile>
 		<Description>WhiteCane provides a wide range of features to allow developers to more easily enable accessibility in their applications.</Description>
 		<PackageTags>accessibility ally a11y</PackageTags>
 	</PropertyGroup>
@@ -20,6 +21,7 @@
 	<ItemGroup>
 		<Compile Remove="Platforms\**"/>
 		<None Include="Assets\Whitecane_logo.png" Pack="true" PackagePath="Whitecane_logo.png"/>
+		<None Include="README.md" Pack="true" PackagePath="\"/>
 	</ItemGroup>
 	
 	<!--IOS-->
