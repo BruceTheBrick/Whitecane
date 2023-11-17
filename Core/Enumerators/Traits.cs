@@ -1,4 +1,4 @@
-﻿namespace WhiteCane.Core;
+﻿namespace WhiteCane;
 
 [Flags]
 public enum Traits

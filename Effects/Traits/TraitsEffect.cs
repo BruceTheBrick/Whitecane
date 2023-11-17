@@ -1,5 +1,4 @@
 ﻿using Microsoft.Maui.Controls.Platform;
-using WhiteCane.Core;
 
 namespace WhiteCane.Effects;
 

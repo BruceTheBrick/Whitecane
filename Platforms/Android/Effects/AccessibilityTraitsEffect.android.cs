@@ -1,6 +1,5 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
-using WhiteCane.Core;
 using WhiteCane.Effects;
 
 namespace WhiteCane.Droid.Effects;

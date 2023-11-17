@@ -1,5 +1,4 @@
 ﻿using UIKit;
-using WhiteCane.Core;
 using WhiteCane.Effects;
 
 namespace WhiteCane.iOS.Effects;
