@@ -8,6 +8,7 @@ internal static class PlatformInitializer
     internal static void InitializePlatform(this MauiAppBuilder builder)
     {
         builder.ConfigureEffects(RegisterPlatformEffects);
+        builder.ConfigureMauiHandlers(x => {  });
     }
     
     private static void RegisterPlatformEffects(IEffectsBuilder effects)
