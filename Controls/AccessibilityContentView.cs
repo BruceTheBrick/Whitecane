@@ -2,8 +2,10 @@
 
 namespace WhiteCane.Controls;
 
-public interface IAccessibilityContentView : IView
+public partial class AccessibilityContentView : IAccessibilityContentView, IElement
 {
+    public IElementHandler Handler { get; set; }
+    public IElement Parent { get; }
     public ICommand IncrementCommand { get; set; }
     public ICommand DecrementCommand { get; set; }
     public IList<BaseAccessibilityAction> Actions { get; set; }

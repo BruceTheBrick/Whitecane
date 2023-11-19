@@ -1,28 +1,33 @@
-﻿using Microsoft.Maui.Handlers;
+﻿#if ANDROID
+using AndroidX.Core.View;
+using Microsoft.Maui.Handlers;
 using WhiteCane.Controls;
-using View = Android.Views.View;
 
 namespace WhiteCane.Handlers;
 
-public partial class AccessibilityContentViewHandler : ViewHandler<IAccessibilityContentView, Android.Views.View>
+public partial class AccessibilityContentViewHandler : ViewHandler<ContentView, AccessibilityContentView>
 {
-    protected override View CreatePlatformView()
-    {
-        return new View(Context);
-    }
-    
-    private static void MapIncrementCommand(AccessibilityContentViewHandler handler, IAccessibilityContentView contentView)
+    private static void MapIncrementCommand(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
     {
         throw new NotImplementedException();
     }
-    
-    private static void MapDecrementCommand(AccessibilityContentViewHandler handler, IAccessibilityContentView contentView)
+
+    protected override AccessibilityContentView CreatePlatformView()
     {
         throw new NotImplementedException();
     }
-    
-    private static void MapActions(AccessibilityContentViewHandler handler, IAccessibilityContentView contentView)
+
+    private static void MapDecrementCommand(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
     {
         throw new NotImplementedException();
+    }
+
+    private static void MapActions(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
+    {
+        foreach (var action in handler.PlatformView.Actions)
+        {
+            ViewCompat.AddAccessibilityAction(contentView, action.Label, new NativeAccessibilityAction(action.Command));
+        }
     }
 }
+#endif

@@ -1,36 +1,30 @@
-﻿using Microsoft.Maui.Handlers;
-using UIKit;
+﻿#if IOS
+#nullable enable
+using Microsoft.Maui.Handlers;
 using WhiteCane.Controls;
 
 namespace WhiteCane.Handlers;
 
-public partial class AccessibilityContentViewHandler : ViewHandler<IAccessibilityContentView, UIView>
+public partial class AccessibilityContentViewHandler : ViewHandler<ContentView, AccessibilityContentView>
 {
-    protected override UIView CreatePlatformView()
+    protected override AccessibilityContentView CreatePlatformView()
     {
-        return new UIView();
-    }
-
-    private static void MapIncrementCommand(AccessibilityContentViewHandler handler, IAccessibilityContentView contentView)
-    {
-        ApplyAdjustableIfCommandsAreSet(handler, contentView);
+        return new AccessibilityContentView();
     }
     
-    private static void MapDecrementCommand(AccessibilityContentViewHandler handler, IAccessibilityContentView contentView)
+    private static void MapIncrementCommand(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
     {
-        ApplyAdjustableIfCommandsAreSet(handler, contentView);
-    }
-    
-    private static void MapActions(AccessibilityContentViewHandler handler, IAccessibilityContentView contentView)
-    {
-        throw new NotImplementedException();
+        contentView.IncrementCommand = handler.PlatformView.IncrementCommand;
     }
 
-    private static void ApplyAdjustableIfCommandsAreSet(AccessibilityContentViewHandler handler, IAccessibilityContentView contentView)
+    private static void MapDecrementCommand(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
     {
-        if (contentView.DecrementCommand is not null || contentView.IncrementCommand is not null)
-        {
-            handler.PlatformView.AccessibilityTraits |= UIAccessibilityTrait.Adjustable;
-        }
+        contentView.DecrementCommand = handler.PlatformView.DecrementCommand;
+    }
+
+    private static void MapActions(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
+    {
+        contentView.Actions = handler.PlatformView.Actions;
     }
 }
+#endif

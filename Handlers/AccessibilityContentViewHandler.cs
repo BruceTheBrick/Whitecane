@@ -4,15 +4,15 @@ namespace WhiteCane.Handlers;
 
 public partial class AccessibilityContentViewHandler
 {
-    public readonly static PropertyMapper<IAccessibilityContentView, AccessibilityContentViewHandler> PropertyMapper = 
-        new(ViewMapper)
-    {
-        [nameof(IAccessibilityContentView.IncrementCommand)] = MapIncrementCommand,
-        [nameof(IAccessibilityContentView.DecrementCommand)] = MapDecrementCommand,
-        [nameof(IAccessibilityContentView.Actions)] = MapActions,
-    };
+    public static readonly IPropertyMapper<AccessibilityContentView, AccessibilityContentViewHandler> PropertyMapper =
+        new PropertyMapper<AccessibilityContentView, AccessibilityContentViewHandler>
+        {
+            [nameof(AccessibilityContentView.IncrementCommand)] = MapIncrementCommand,
+            [nameof(AccessibilityContentView.DecrementCommand)] = MapDecrementCommand,
+            [nameof(AccessibilityContentView.Actions)] = MapActions,
+        };
 
-    public AccessibilityContentViewHandler() 
+    public AccessibilityContentViewHandler()
         : base(PropertyMapper)
     {
     }
