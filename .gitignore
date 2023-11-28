@@ -3,3 +3,5 @@
 obj
 bin
 *.DotSettings
+/global.json
+/WhiteCane.sln.DotSettings.user
