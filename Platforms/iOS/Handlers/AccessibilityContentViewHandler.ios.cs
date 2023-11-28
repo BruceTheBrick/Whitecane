@@ -1,5 +1,4 @@
 ﻿#if IOS
-#nullable enable
 using Microsoft.Maui.Handlers;
 using WhiteCane.Controls;
 
