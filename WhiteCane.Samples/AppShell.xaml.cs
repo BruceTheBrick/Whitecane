@@ -1,9 +1,18 @@
-﻿namespace WhiteCane.Samples;
+﻿using WhiteCane.Samples.Features;
 
-public partial class AppShell : Shell
+namespace WhiteCane.Samples;
+
+public partial class AppShell
 {
     public AppShell()
     {
         InitializeComponent();
+        RegisterRoutes();
+    }
+
+    private void RegisterRoutes()
+    {
+        Routing.RegisterRoute(Routes.HomePage, typeof(HomePage));
+        Routing.RegisterRoute(Routes.AccessibilityContentViewPage, typeof(AccessibilityContentViewPage));
     }
 }

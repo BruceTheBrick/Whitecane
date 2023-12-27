@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    Title="Home"
+    x:Class="WhiteCane.Samples.HomePage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Style="{StaticResource Headline}" Text="Welcome to WhiteCane.Samples" />
+            <Label Text="This app provides is an interactive demonstration of the features and functionality provided by the WhiteCane project." />
+            <BoxView HeightRequest="1" />
+            <Button Clicked="NavigateToAccessibilityContentViewPage" Text="AccessibilityContentView" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
