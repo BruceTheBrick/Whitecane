@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls.Compatibility.Hosting;
-using WhiteCane.Effects;
+﻿using WhiteCane.Effects;
 using WhiteCane.Handlers;
 using WhiteCane.iOS.Effects;
 
@@ -15,7 +14,7 @@ internal static class PlatformInitializer
 
     private static void RegisterPlatformEffects(IEffectsBuilder effects)
     {
-        effects.AddCompatibilityEffects(typeof(AccessibilityTraits).Assembly, typeof(AccessibilityTraitsEffect).Assembly);
+        effects.Add<AccessibilityTraits, AccessibilityTraitsEffect>();
     }
     
     private static void RegisterPlatformHandlers(IMauiHandlersCollection handlers)
