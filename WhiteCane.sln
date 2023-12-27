@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteCane", "WhiteCane.csproj", "{C5577B82-2DF8-4BA9-A51F-4253C8699210}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteCane", "WhiteCane\WhiteCane.csproj", "{C5577B82-2DF8-4BA9-A51F-4253C8699210}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
