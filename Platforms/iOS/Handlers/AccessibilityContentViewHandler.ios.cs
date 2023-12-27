@@ -1,29 +1,15 @@
 ﻿#if IOS
-using Microsoft.Maui.Handlers;
-using WhiteCane.Controls;
+using WhiteCane.Platforms.Controls;
+using ContentView = Microsoft.Maui.Platform.ContentView;
 
 namespace WhiteCane.Handlers;
 
-public partial class AccessibilityContentViewHandler : ViewHandler<ContentView, AccessibilityContentView>
+public partial class AccessibilityContentViewHandler
 {
-    protected override AccessibilityContentView CreatePlatformView()
+    private IAccessibilityContentView AccessibilityContentView => VirtualView as IAccessibilityContentView;
+    protected override ContentView CreatePlatformView()
     {
-        return new AccessibilityContentView();
-    }
-    
-    private static void MapIncrementCommand(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
-    {
-        contentView.IncrementCommand = handler.PlatformView.IncrementCommand;
-    }
-
-    private static void MapDecrementCommand(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
-    {
-        contentView.DecrementCommand = handler.PlatformView.DecrementCommand;
-    }
-
-    private static void MapActions(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
-    {
-        contentView.Actions = handler.PlatformView.Actions;
+        return new NativeAccessibilityContentView(AccessibilityContentView);
     }
 }
 #endif
