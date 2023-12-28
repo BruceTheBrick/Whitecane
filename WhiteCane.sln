@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34221.43
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteCane", "WhiteCane.csproj", "{C5577B82-2DF8-4BA9-A51F-4253C8699210}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteCane", "WhiteCane\WhiteCane.csproj", "{C5577B82-2DF8-4BA9-A51F-4253C8699210}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteCane.Samples", "WhiteCane.Samples\WhiteCane.Samples.csproj", "{5563BD7B-5867-49D2-8219-51D81591E98B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{C5577B82-2DF8-4BA9-A51F-4253C8699210}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C5577B82-2DF8-4BA9-A51F-4253C8699210}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C5577B82-2DF8-4BA9-A51F-4253C8699210}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5563BD7B-5867-49D2-8219-51D81591E98B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5563BD7B-5867-49D2-8219-51D81591E98B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5563BD7B-5867-49D2-8219-51D81591E98B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5563BD7B-5867-49D2-8219-51D81591E98B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
