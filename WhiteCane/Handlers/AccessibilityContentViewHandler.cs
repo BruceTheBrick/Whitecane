@@ -1,19 +1,7 @@
-﻿using WhiteCane.Controls;
+﻿using Microsoft.Maui.Handlers;
 
 namespace WhiteCane.Handlers;
 
-public partial class AccessibilityContentViewHandler
+public partial class AccessibilityContentViewHandler : ContentViewHandler
 {
-    public static readonly IPropertyMapper<AccessibilityContentView, AccessibilityContentViewHandler> PropertyMapper =
-        new PropertyMapper<AccessibilityContentView, AccessibilityContentViewHandler>
-        {
-            [nameof(AccessibilityContentView.IncrementCommand)] = MapIncrementCommand,
-            [nameof(AccessibilityContentView.DecrementCommand)] = MapDecrementCommand,
-            [nameof(AccessibilityContentView.Actions)] = MapActions,
-        };
-
-    public AccessibilityContentViewHandler()
-        : base(PropertyMapper)
-    {
-    }
 }

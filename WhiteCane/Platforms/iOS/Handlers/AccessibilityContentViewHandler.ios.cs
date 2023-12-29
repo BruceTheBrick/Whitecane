@@ -1,30 +1,46 @@
 ﻿#if IOS
-#nullable enable
-using Microsoft.Maui.Handlers;
-using WhiteCane.Controls;
+using WhiteCane.Platforms.Controls;
+using ContentView = Microsoft.Maui.Platform.ContentView;
 
 namespace WhiteCane.Handlers;
 
-public partial class AccessibilityContentViewHandler : ViewHandler<ContentView, AccessibilityContentView>
+public partial class AccessibilityContentViewHandler
 {
-    protected override AccessibilityContentView CreatePlatformView()
+    public static IPropertyMapper<AccessibilityContentView, AccessibilityContentViewHandler> PropertyMapper =
+        new PropertyMapper<AccessibilityContentView, AccessibilityContentViewHandler>(ViewMapper)
+        {
+            [nameof(IAccessibilityContentView.IncrementCommand)] = MapIncrementCommand,
+            [nameof(IAccessibilityContentView.DecrementCommand)] = MapDecrementCommand,
+            [nameof(IAccessibilityContentView.Actions)] = MapActions,
+        };
+
+    private static void MapIncrementCommand(AccessibilityContentViewHandler handler, AccessibilityContentView view)
     {
-        return new AccessibilityContentView();
-    }
-    
-    private static void MapIncrementCommand(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
-    {
-        contentView.IncrementCommand = handler.PlatformView.IncrementCommand;
+        if (handler.PlatformView is NativeAccessibilityContentView nativeAccessibilityContentView)
+        {
+            nativeAccessibilityContentView.IncrementCommand = view.IncrementCommand;
+        }
     }
 
-    private static void MapDecrementCommand(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
+    private static void MapDecrementCommand(AccessibilityContentViewHandler handler, AccessibilityContentView view)
     {
-        contentView.DecrementCommand = handler.PlatformView.DecrementCommand;
+       if(handler.PlatformView is NativeAccessibilityContentView nativeAccessibilityContentView)
+       {
+           nativeAccessibilityContentView.DecrementCommand = view.DecrementCommand;
+       }
     }
 
-    private static void MapActions(AccessibilityContentViewHandler handler, AccessibilityContentView contentView)
+    private static void MapActions(AccessibilityContentViewHandler handler, AccessibilityContentView view)
     {
-        contentView.Actions = handler.PlatformView.Actions;
+        if (handler.PlatformView is NativeAccessibilityContentView nativeAccessibilityContentView)
+        {
+            nativeAccessibilityContentView.Actions = view.Actions;
+        }
+    }
+
+    protected override ContentView CreatePlatformView()
+    {
+        return new NativeAccessibilityContentView(VirtualView as IAccessibilityContentView);
     }
 }
 #endif

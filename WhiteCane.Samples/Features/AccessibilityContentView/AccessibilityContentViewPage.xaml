@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<features:BasePage
+    x:Class="WhiteCane.Samples.Features.AccessibilityContentViewPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:features="clr-namespace:WhiteCane.Samples.Features"
+    xmlns:whiteCane="clr-namespace:WhiteCane;assembly=WhiteCane"
+    Title="Accessibility ContentView"
+    x:DataType="features:AccessibilityContentViewPageViewModel">
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label Margin="0,0,0,16" Text="The AccessibilityContentView allows developers to define Increment and Decrement commands, as well as an arbitrary list of commands only accessible to screen readers." />
+            <whiteCane:AccessibilityContentView
+                Padding="16"
+                Actions="{Binding Actions}"
+                BackgroundColor="LightGray"
+                DecrementCommand="{Binding DecrementCommand}"
+                IncrementCommand="{Binding IncrementCommand}"
+                SemanticProperties.Description="This is the accessibility content view">
+                <Label Text="This label is contained within an AccessibilityContentView" />
+            </whiteCane:AccessibilityContentView>
+        </VerticalStackLayout>
+    </ScrollView>
+</features:BasePage>
