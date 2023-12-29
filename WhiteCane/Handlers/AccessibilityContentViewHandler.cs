@@ -4,5 +4,4 @@ namespace WhiteCane.Handlers;
 
 public partial class AccessibilityContentViewHandler : ContentViewHandler
 {
-    
 }

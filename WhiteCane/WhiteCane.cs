@@ -1,4 +1,4 @@
-﻿#if !NET
+﻿#if ANDROID || IOS
 #define PLATFORM_IDENTIFIED
 
 using WhiteCane.Platforms;

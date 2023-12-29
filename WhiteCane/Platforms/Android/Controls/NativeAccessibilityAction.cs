@@ -1,10 +1,9 @@
 ﻿using System.Windows.Input;
 using AndroidX.Core.View.Accessibility;
-using Java.Interop;
 
 namespace WhiteCane.Controls;
 
-public class NativeAccessibilityAction :  JavaObject, IAccessibilityViewCommand
+public class NativeAccessibilityAction : Java.Lang.Object, IAccessibilityViewCommand
 {
     private readonly ICommand _command;
 
@@ -17,8 +16,6 @@ public class NativeAccessibilityAction :  JavaObject, IAccessibilityViewCommand
     {
         _command = action.Command;
     }
-
-    public IntPtr Handle { get; }
     
     public bool Perform(Android.Views.View view, AccessibilityViewCommandCommandArguments arguments)
     {
@@ -27,7 +24,7 @@ public class NativeAccessibilityAction :  JavaObject, IAccessibilityViewCommand
             _command?.Execute(null);
             return true;
         }
-        catch (Exception e)
+        catch
         {
             return false;
         }
