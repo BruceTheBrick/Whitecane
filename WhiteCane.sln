@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteCane.Samples", "WhiteC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteCane", "WhiteCane\WhiteCane.csproj", "{F7487C8C-DB66-489F-8DAB-4EFD67149133}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteCane.Tests", "WhiteCane.Tests\WhiteCane.Tests.csproj", "{5B19424C-7410-4933-880E-879A58CCDF14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WhiteCane.Tests", "WhiteCane.Tests\WhiteCane.Tests.csproj", "{17561EB9-71DD-4CB8-A814-96F01770B678}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,10 +21,10 @@ Global
 		{5563BD7B-5867-49D2-8219-51D81591E98B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F7487C8C-DB66-489F-8DAB-4EFD67149133}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F7487C8C-DB66-489F-8DAB-4EFD67149133}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B19424C-7410-4933-880E-879A58CCDF14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5B19424C-7410-4933-880E-879A58CCDF14}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5B19424C-7410-4933-880E-879A58CCDF14}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5B19424C-7410-4933-880E-879A58CCDF14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17561EB9-71DD-4CB8-A814-96F01770B678}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17561EB9-71DD-4CB8-A814-96F01770B678}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17561EB9-71DD-4CB8-A814-96F01770B678}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17561EB9-71DD-4CB8-A814-96F01770B678}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
