@@ -57,8 +57,4 @@
     <ItemGroup>
       <ProjectReference Include="..\WhiteCane\WhiteCane.csproj" />
     </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="Resources\Raw\" />
-    </ItemGroup>
 </Project>

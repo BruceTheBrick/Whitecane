@@ -1,9 +1,10 @@
-﻿using WhiteCane.Samples.Features;
+﻿using System.Diagnostics.CodeAnalysis;
 
 namespace WhiteCane.Samples;
 
 public partial class AppShell
 {
+    [ExcludeFromCodeCoverage]
     public AppShell()
     {
         InitializeComponent();

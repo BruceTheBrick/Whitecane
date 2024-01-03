@@ -1,5 +1,4 @@
 ﻿using epj.RouteGenerator;
-using WhiteCane.Samples.Features;
 
 namespace WhiteCane.Samples;
 
@@ -13,7 +12,7 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .UseWhiteCane()
             .RegisterServices()
-            .RegisterViewsAndViewModels()
+            .RegisterPages()
             .ConfigureFonts(fonts =>
             {
                 fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
@@ -30,10 +29,11 @@ public static class MauiProgram
         return builder;
     }
 
-    private static MauiAppBuilder RegisterViewsAndViewModels(this MauiAppBuilder builder)
+    private static MauiAppBuilder RegisterPages(this MauiAppBuilder builder)
     {
         builder.Services.AddTransient<HomePage>();
         builder.Services.AddTransient<HomePageViewModel>();
+        
         builder.Services.AddTransient<AccessibilityContentViewPage>();
         builder.Services.AddTransient<AccessibilityContentViewPageViewModel>();
 
