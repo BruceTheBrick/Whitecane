@@ -1,6 +1,6 @@
 ﻿using WhiteCane.Effects;
 using WhiteCane.Handlers;
-using WhiteCane.iOS.Effects;
+using WhiteCane.Platforms.iOS.Effects;
 
 namespace WhiteCane.Platforms;
 

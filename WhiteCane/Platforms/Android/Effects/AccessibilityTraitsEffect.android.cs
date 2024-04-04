@@ -2,7 +2,7 @@
 using System.Diagnostics;
 using WhiteCane.Effects;
 
-namespace WhiteCane.Droid.Effects;
+namespace WhiteCane.Platforms.Droid.Effects;
 
 internal class AccessibilityTraitsEffect : TraitsEffect
 {

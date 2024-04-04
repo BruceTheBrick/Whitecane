@@ -4,7 +4,7 @@ using Foundation;
 using UIKit;
 using ContentView = Microsoft.Maui.Platform.ContentView;
 
-namespace WhiteCane.Platforms.Controls;
+namespace WhiteCane.Platforms.iOS.Controls;
 
 public class NativeAccessibilityContentView : ContentView, IAccessibilityContentView
 {
