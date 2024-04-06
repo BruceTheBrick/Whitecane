@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace WhiteCane.Samples;
+namespace WhiteCane.Samples.Platforms.Android;
 
 [Application]
 public class MainApplication : MauiApplication

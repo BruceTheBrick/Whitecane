@@ -1,7 +1,7 @@
 ﻿using UIKit;
 using WhiteCane.Effects;
 
-namespace WhiteCane.iOS.Effects;
+namespace WhiteCane.Platforms.iOS.Effects;
 
 internal class AccessibilityTraitsEffect : TraitsEffect
 {

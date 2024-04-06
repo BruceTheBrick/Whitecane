@@ -1,7 +1,7 @@
 ﻿using Microsoft.Maui.Controls.Compatibility.Hosting;
 using WhiteCane.Effects;
 using WhiteCane.Handlers;
-using WhiteCane.Droid.Effects;
+using WhiteCane.Platforms.Droid.Effects;
 
 namespace WhiteCane.Platforms;
 

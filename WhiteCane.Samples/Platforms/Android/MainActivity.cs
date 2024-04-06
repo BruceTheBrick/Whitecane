@@ -1,8 +1,7 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.OS;
 
-namespace WhiteCane.Samples;
+namespace WhiteCane.Samples.Platforms.Android;
 
 [Activity(Theme = "@style/Maui.SplashTheme", MainLauncher = true,
     ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation | ConfigChanges.UiMode |

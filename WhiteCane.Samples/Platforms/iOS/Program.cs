@@ -1,7 +1,6 @@
-﻿using ObjCRuntime;
-using UIKit;
+﻿using UIKit;
 
-namespace WhiteCane.Samples;
+namespace WhiteCane.Samples.Platforms.iOS;
 
 public class Program
 {

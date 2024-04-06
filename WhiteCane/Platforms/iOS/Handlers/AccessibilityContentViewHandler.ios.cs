@@ -1,5 +1,5 @@
 ﻿#if IOS
-using WhiteCane.Platforms.Controls;
+using WhiteCane.Platforms.iOS.Controls;
 using ContentView = Microsoft.Maui.Platform.ContentView;
 
 namespace WhiteCane.Handlers;

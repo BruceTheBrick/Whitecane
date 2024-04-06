@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace WhiteCane.Samples;
+namespace WhiteCane.Samples.Platforms.iOS;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

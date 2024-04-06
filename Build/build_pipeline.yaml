@@ -1,0 +1,18 @@
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+steps:
+  - task: DotNetCoreCLI@2
+    displayName: 'Build WhiteCane'
+    inputs:
+      command: 'build'
+      arguments: '-c $(Library_Build_Configuration)'
+      
+  - task: PublishBuildArtifacts@1
+    displayName: 'Publish WhiteCane NuGet Artifact'
+    inputs:
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+      ArtifactName: 'WhiteCane.1.0.6.nupkg'
+      publishLocation: 'Container'
