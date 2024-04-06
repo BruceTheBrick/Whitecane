@@ -4,6 +4,11 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
+  - task: CmdLine@2
+    displayName: 'Install MAUI Workloads'
+    inputs:
+      script: 'dotnet workload install maui maui-android maui-ios'
+  
   - task: DotNetCoreCLI@2
     displayName: 'Build WhiteCane'
     inputs:
