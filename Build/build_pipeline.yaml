@@ -4,10 +4,11 @@ pool:
   vmImage: 'windows-latest'
 
 steps:
-#  - task: CmdLine@2
-#    displayName: 'Install MAUI Workloads'
-#    inputs:
-#      script: 'dotnet workload install maui maui-android maui-ios'
+  - task: UseDotNet@2
+    displayName: 'Use DotNet Version $(Library_DotNetVersion)'
+    inputs:
+      packageType: 'sdk'
+      version: '$(DotNetVersion)'
   
   - task: DotNetCoreCLI@2
     displayName: 'Build WhiteCane'

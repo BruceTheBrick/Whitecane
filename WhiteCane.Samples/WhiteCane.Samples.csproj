@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net8.0;net8.0-android;net8.0-ios;</TargetFrameworks>
-
         <OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
         <RootNamespace>WhiteCane.Samples</RootNamespace>
         <UseMaui>true</UseMaui>

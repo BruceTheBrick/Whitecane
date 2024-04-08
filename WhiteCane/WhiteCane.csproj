@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
-		<TargetFrameworks>net7.0;net7.0-android;net7.0-ios;</TargetFrameworks>
+		<TargetFrameworks>net8.0;net8.0-android;net8.0-ios;</TargetFrameworks>
 		<UseMaui>true</UseMaui>
 		<SingleProject>true</SingleProject>
 		<ImplicitUsings>enable</ImplicitUsings>
@@ -8,7 +8,6 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">14.2</SupportedOSPlatformVersion>
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
 		
-		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Title>WhiteCane</Title>
 		<Authors>BruceTheBrick</Authors>
 		<PackageIcon>Whitecane_logo.png</PackageIcon>
@@ -18,6 +17,7 @@
 		<Description>WhiteCane provides a wide range of features to allow developers to more easily enable accessibility in their applications.</Description>
 		<PackageTags>accessibility ally a11y</PackageTags>
 		<Version>1.0.6</Version>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 	
 	<ItemGroup>
@@ -27,12 +27,12 @@
 	</ItemGroup>
 	
 	<!--IOS-->
-	<ItemGroup Condition="$(TargetFramework) == 'net7.0-ios'">
+	<ItemGroup Condition="$(TargetFramework) == 'net8.0-ios'">
 		<Compile Include="Platforms\iOS\**"/>
 	</ItemGroup>
 
 	<!--ANDROID-->
-	<ItemGroup Condition="$(TargetFramework) == 'net7.0-android'">
+	<ItemGroup Condition="$(TargetFramework) == 'net8.0-android'">
 		<Compile Include="Platforms\Android\**"/>
 	</ItemGroup>
 </Project>
