@@ -17,7 +17,9 @@
 		<Description>WhiteCane provides a wide range of features to allow developers to more easily enable accessibility in their applications.</Description>
 		<PackageTags>accessibility ally a11y</PackageTags>
 		<Version>1.0.6</Version>
+		
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<SkipValidateMauiImplicitPackageReferences>true</SkipValidateMauiImplicitPackageReferences>
 	</PropertyGroup>
 	
 	<ItemGroup>

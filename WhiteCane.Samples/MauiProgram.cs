@@ -24,7 +24,7 @@ public static class MauiProgram
 
     private static MauiAppBuilder RegisterServices(this MauiAppBuilder builder)
     {
-        builder.Services.AddTransient<ISemanticScreenReader, ScreenReaderService>();
+        builder.Services.AddTransient<ISemanticScreenReader>(_ => SemanticScreenReader.Default);
 
         return builder;
     }
