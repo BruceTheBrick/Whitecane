@@ -8,7 +8,7 @@ steps:
     displayName: 'Use DotNet Version $(Library_DotNetVersion)'
     inputs:
       packageType: 'sdk'
-      version: '$(DotNetVersion)'
+      version: '$(Library_DotNetVersion)'
   
   - task: DotNetCoreCLI@2
     displayName: 'Build WhiteCane'
