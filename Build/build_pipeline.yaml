@@ -9,6 +9,11 @@ steps:
     inputs:
       packageType: 'sdk'
       version: '$(Library_DotNetVersion)'
+      
+  - task: CmdLine@2
+    displayName: 'Install MAUI Workloads'
+    inputs:
+      script: 'dotnet workload install maui maui-android maui-ios' 
   
   - task: DotNetCoreCLI@2
     displayName: 'Build WhiteCane'
