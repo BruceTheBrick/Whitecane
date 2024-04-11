@@ -26,7 +26,7 @@
     <!--IOS-->
     <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
-        <RunAOTCompilation>false</RunAOTCompilation>
+<!--        <RunAOTCompilation>false</RunAOTCompilation>-->
     </PropertyGroup>
     <ItemGroup>
         <!-- App Icon -->
@@ -47,7 +47,7 @@
 
     <ItemGroup>
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
-        <PackageReference Include="epj.RouteGenerator" Version="1.0.0-pre1" />
+<!--        <PackageReference Include="epj.RouteGenerator" Version="1.0.1" />-->
         <PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="$(MauiVersion)" />
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
