@@ -15,52 +15,52 @@ variables:
 
 jobs:
   # ANDROID ------------------------
-  - job: Job_Android
-    displayName: Build MAUI Project - ANDROID
-    pool:
-      name: Azure Pipelines
-      vmImage: $(Library_AgentOs)
-    steps:
-      - checkout: self
-      
-      # Set .NET Core SDK Version
-      - task: UseDotNet@2
-        displayName: Use .NET Core SDK $(Library_DotNetSdkVersion)
-        inputs:
-          version: $(Library_DotNetSdkVersion)
-      
-      # Install .NET MAUI Workloads
-      - task: CmdLine@2
-        displayName: Install .NET MAUI Workloads
-        inputs:
-          script: dotnet workload install maui --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/$(Library_WorkloadRollbackVersion).json
-
-      # Acquire Android KeyStore File
-      - task: DownloadSecureFile@1
-        name: AndroidKeyStore
-        displayName: Download Keystore File
-        inputs:
-          secureFile: $(Library_Android_SigningKeyStore)
-      
-      # Build for Android
-      - task: CmdLine@2
-        displayName: Build Android Project
-        inputs:
-          script: dotnet publish "${{variables.Local_ProjectDirectory}}/${{variables.Local_ProjectFileName}}" -c $(Library_Configuration) -f net$(Library_DotNetFrameworkVersion)-android /p:ApplicationVersion=$(Build.BuildNumber) /p:AndroidSigningKeyPass=$(Library_Android_KeyPassword) /p:AndroidSigningStorePass=$(Library_Android_KeyStorePassword) /p:AndroidSigningKeyStore=$(AndroidKeyStore.secureFilePath) /p:AndroidSigningKeyAlias=$(Library_Android_SigningAliasName) /p:AndroidKeyStore=true /p:EmbedAssembliesIntoApk=true
-      
-      # Deploy Android to App Center
-      - task: AppCenterDistribute@3
-        displayName: Deploy Android to App Center
-        retryCountOnTaskFailure: ${{variables.Local_AppCenterDeploymentMaxRetries}}
-        inputs:
-          symbolsOption: Android
-          appSlug: $(Library_Android_AppCenterSlug)
-          appFile: "**/${{variables.Local_ProjectDirectory}}/bin/$(Library_Configuration)/net$(Library_DotNetFrameworkVersion)-android/*Signed.apk"
-          serverEndpoint: $(Library_AppCenterConnection)
-          buildVersion: $(Build.BuildNumber)
-          releaseNotesInput: '$(Library_Configuration) Version $(Build.BuildNumber)'
-          isSilent: false
-          symbolsIncludeParentDirectory: false
+#  - job: Job_Android
+#    displayName: Build MAUI Project - ANDROID
+#    pool:
+#      name: Azure Pipelines
+#      vmImage: $(Library_AgentOs)
+#    steps:
+#      - checkout: self
+#      
+#      # Set .NET Core SDK Version
+#      - task: UseDotNet@2
+#        displayName: Use .NET Core SDK $(Library_DotNetSdkVersion)
+#        inputs:
+#          version: $(Library_DotNetSdkVersion)
+#      
+#      # Install .NET MAUI Workloads
+#      - task: CmdLine@2
+#        displayName: Install .NET MAUI Workloads
+#        inputs:
+#          script: dotnet workload install maui --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/$(Library_WorkloadRollbackVersion).json
+#
+#      # Acquire Android KeyStore File
+#      - task: DownloadSecureFile@1
+#        name: AndroidKeyStore
+#        displayName: Download Keystore File
+#        inputs:
+#          secureFile: $(Library_Android_SigningKeyStore)
+#      
+#      # Build for Android
+#      - task: CmdLine@2
+#        displayName: Build Android Project
+#        inputs:
+#          script: dotnet publish "${{variables.Local_ProjectDirectory}}/${{variables.Local_ProjectFileName}}" -c $(Library_Configuration) -f net$(Library_DotNetFrameworkVersion)-android /p:ApplicationVersion=$(Build.BuildNumber) /p:AndroidSigningKeyPass=$(Library_Android_KeyPassword) /p:AndroidSigningStorePass=$(Library_Android_KeyStorePassword) /p:AndroidSigningKeyStore=$(AndroidKeyStore.secureFilePath) /p:AndroidSigningKeyAlias=$(Library_Android_SigningAliasName) /p:AndroidKeyStore=true /p:EmbedAssembliesIntoApk=true
+#      
+#      # Deploy Android to App Center
+#      - task: AppCenterDistribute@3
+#        displayName: Deploy Android to App Center
+#        retryCountOnTaskFailure: ${{variables.Local_AppCenterDeploymentMaxRetries}}
+#        inputs:
+#          symbolsOption: Android
+#          appSlug: $(Library_Android_AppCenterSlug)
+#          appFile: "**/${{variables.Local_ProjectDirectory}}/bin/$(Library_Configuration)/net$(Library_DotNetFrameworkVersion)-android/*Signed.apk"
+#          serverEndpoint: $(Library_AppCenterConnection)
+#          buildVersion: $(Build.BuildNumber)
+#          releaseNotesInput: '$(Library_Configuration) Version $(Build.BuildNumber)'
+#          isSilent: false
+#          symbolsIncludeParentDirectory: false
 
   # IOS ----------------------------      
   - job: Job_iOS
