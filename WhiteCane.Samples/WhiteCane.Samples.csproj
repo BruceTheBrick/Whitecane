@@ -26,11 +26,8 @@
     <!--IOS-->
     <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+        <RunAOTCompilation>false</RunAOTCompilation>
     </PropertyGroup>
-    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-        <AOTAssemblies>False</AOTAssemblies>
-    </PropertyGroup>
-
     <ItemGroup>
         <!-- App Icon -->
         <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#FFFFFF" />
