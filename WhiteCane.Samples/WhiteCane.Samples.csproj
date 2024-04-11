@@ -1,7 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <TargetFrameworks>net8.0;net8.0-android;net8.0-ios;</TargetFrameworks>
-
         <OutputType Condition="'$(TargetFramework)' != 'net8.0'">Exe</OutputType>
         <RootNamespace>WhiteCane.Samples</RootNamespace>
         <UseMaui>true</UseMaui>
@@ -27,6 +26,9 @@
     <!--IOS-->
     <PropertyGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
+    </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
+        <RunAOTCompilation>False</RunAOTCompilation>
     </PropertyGroup>
 
     <ItemGroup>
@@ -56,5 +58,9 @@
 
     <ItemGroup>
       <ProjectReference Include="..\WhiteCane\WhiteCane.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Services\" />
     </ItemGroup>
 </Project>

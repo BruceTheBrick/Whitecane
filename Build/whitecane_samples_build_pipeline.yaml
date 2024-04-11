@@ -1,0 +1,151 @@
+name: $(date:yyyyMMdd)$(rev:r)
+
+parameters:
+  - name : ShouldRunTests
+    displayName: Should Run Unit Tests
+    type: boolean
+    default: true
+
+variables:
+  Local_ProjectDirectory: WhiteCane.Samples
+  Local_ProjectFileName: WhiteCane.Samples.csproj
+  Local_UnitTestProjectDirectory: WhiteCane.Tests
+  Local_UnitTestProjectFileName: WhiteCane.Tests.csproj
+  Local_AppCenterDeploymentMaxRetries: 3
+
+jobs:
+  # ANDROID ------------------------
+  - job: Job_Android
+    displayName: Build MAUI Project - ANDROID
+    pool:
+      name: Azure Pipelines
+      vmImage: $(Library_AgentOs)
+    steps:
+      - checkout: self
+      
+      # Set .NET Core SDK Version
+      - task: UseDotNet@2
+        displayName: Use .NET Core SDK $(Library_DotNetSdkVersion)
+        inputs:
+          version: $(Library_DotNetSdkVersion)
+      
+      # Install .NET MAUI Workloads
+      - task: CmdLine@2
+        displayName: Install .NET MAUI Workloads
+        inputs:
+          script: dotnet workload install maui --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/$(Library_WorkloadRollbackVersion).json
+
+      # Acquire Android KeyStore File
+      - task: DownloadSecureFile@1
+        name: AndroidKeyStore
+        displayName: Download Keystore File
+        inputs:
+          secureFile: $(Library_Android_SigningKeyStore)
+      
+      # Build for Android
+      - task: CmdLine@2
+        displayName: Build Android Project
+        inputs:
+          script: dotnet publish "${{variables.Local_ProjectDirectory}}/${{variables.Local_ProjectFileName}}" -c $(Library_Configuration) -f net$(Library_DotNetFrameworkVersion)-android /p:ApplicationVersion=$(Build.BuildNumber) /p:AndroidSigningKeyPass=$(Library_Android_KeyPassword) /p:AndroidSigningStorePass=$(Library_Android_KeyStorePassword) /p:AndroidSigningKeyStore=$(AndroidKeyStore.secureFilePath) /p:AndroidSigningKeyAlias=$(Library_Android_SigningAliasName) /p:AndroidKeyStore=true /p:EmbedAssembliesIntoApk=true
+      
+      # Deploy Android to App Center
+      - task: AppCenterDistribute@3
+        displayName: Deploy Android to App Center
+        retryCountOnTaskFailure: ${{variables.Local_AppCenterDeploymentMaxRetries}}
+        inputs:
+          symbolsOption: Android
+          appSlug: $(Library_Android_AppCenterSlug)
+          appFile: "**/${{variables.Local_ProjectDirectory}}/bin/$(Library_Configuration)/net$(Library_DotNetFrameworkVersion)-android/*Signed.apk"
+          serverEndpoint: $(Library_AppCenterConnection)
+          buildVersion: $(Build.BuildNumber)
+          releaseNotesInput: '$(Library_Configuration) Version $(Build.BuildNumber)'
+          isSilent: false
+          symbolsIncludeParentDirectory: false
+
+  # IOS ----------------------------      
+  - job: Job_iOS
+    displayName: Build MAUI Project - IOS
+    pool:
+      name: Azure Pipelines
+      vmImage: $(Library_AgentOs)
+    steps:
+      - checkout: self
+      
+      # Set .NET Core SDK Version
+      - task: UseDotNet@2
+        displayName: Use .NET Core SDK $(Library_DotNetSdkVersion)
+        inputs:
+          version: $(Library_DotNetSdkVersion)
+
+      # Select a specific version of XCode
+      - task: CmdLine@2
+        displayName: Select XCode Version
+        inputs:
+          script: sudo xcode-select --switch /Applications/Xcode_$(Library_XcodeVersion).app
+
+      # Install .NET MAUI Workloads
+      - task: CmdLine@2
+        displayName: Install .NET MAUI Workloads
+        inputs:
+          script: dotnet workload install maui --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/$(Library_WorkloadRollbackVersion).json
+
+      # Install Apple Certificate
+      - task: InstallAppleCertificate@2
+        displayName: Install Certificate
+        inputs:
+          certSecureFile: $(Library_IOS_Certificate)
+
+      # Install Provisioning Profile
+      - task: InstallAppleProvisioningProfile@1
+        displayName: Install Provisioning Profile
+        inputs:
+          provProfileSecureFile: $(Library_IOS_ProvisioningProfile)
+
+      # Build for iOS
+      - task: CmdLine@2
+        displayName: Build iOS Project
+        inputs:
+          script: dotnet publish "${{variables.Local_ProjectDirectory}}/${{variables.Local_ProjectFileName}}" -f net$(Library_DotNetFrameworkVersion)-ios -c $(Library_Configuration) /p:ApplicationVersion=$(Build.BuildNumber) /p:RuntimeIdentifier=ios-arm64
+
+      # Deploy iOS to App Center
+      - task: AppCenterDistribute@3
+        displayName: Deploy iOS to App Center
+        retryCountOnTaskFailure: ${{variables.Local_AppCenterDeploymentMaxRetries}}
+        inputs:
+          symbolsOption: Apple
+          appSlug: $(Library_IOS_AppCenterSlug)
+          appFile: "**/${{variables.Local_ProjectDirectory}}/bin/$(Library_Configuration)/net$(Library_DotNetFrameworkVersion)-ios/ios-arm64/publish/*.ipa"
+          serverEndpoint: $(Library_AppCenterConnection)
+          buildVersion: $(Build.BuildNumber)
+          releaseNotesInput: '$(Library_Configuration) Version $(Build.BuildNumber)'
+          isSilent: false
+          symbolsIncludeParentDirectory: false
+  
+  
+  # UNIT TESTS --------------------- 
+  - job: Job_UnitTests
+    displayName: Run Unit Tests
+    condition: ${{ parameters.ShouldRunTests }}
+    pool:
+      name: Azure Pipelines
+      vmImage: $(Library_AgentOs)
+    steps:
+      - checkout: self
+
+      # Set .NET Core SDK Version
+      - task: UseDotNet@2
+        displayName: Use .NET Core SDK $(Library_DotNetSdkVersion)
+        inputs:
+          version: $(Library_DotNetSdkVersion)
+
+      # Install .NET MAUI Workloads
+      - task: CmdLine@2
+        displayName: Install .NET MAUI Workloads
+        inputs:
+          script: dotnet workload install maui --from-rollback-file https://maui.blob.core.windows.net/metadata/rollbacks/$(Library_WorkloadRollbackVersion).json
+      
+      # Run unit tests
+      - task: CmdLine@2
+        displayName: Run Unit Tests
+        inputs:
+          script: dotnet test "${{variables.Local_UnitTestProjectDirectory}}/${{variables.Local_UnitTestProjectFileName}}" -c $(Library_Configuration) --collect "XPlat Code Coverage"
