@@ -28,7 +28,7 @@
         <RuntimeIdentifier>ios-arm64</RuntimeIdentifier>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-ios|AnyCPU'">
-        <RunAOTCompilation>False</RunAOTCompilation>
+        <AOTAssemblies>False</AOTAssemblies>
     </PropertyGroup>
 
     <ItemGroup>

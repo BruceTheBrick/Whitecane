@@ -102,12 +102,10 @@ jobs:
           provProfileSecureFile: $(Library_IOS_ProvisioningProfile)
 
       # Build for iOS
-      - task: DotNetCoreCLI@2
-        inputs: 
-          command: 'build'
-          projects: "${{variables.Local_ProjectDirectory}}/${{variables.Local_ProjectFileName}}"
-          configuration: $(Library_Configuration)
-          arguments: "-f net$(Library_DotNetFrameworkVersion)-ios /p:ApplicationVersion=$(Build.BuildNumber) /p:RuntimeIdentifier=ios-arm64 /p:CodesignKey=$(APPLE_CERTIFICATE_SIGNING_IDENTITY) /p:signingProvisioningProfileID=$(APPLE_PROV_PROFILE_UUID)"
+      - task: CmdLine@2
+        displayName: Build iOS Project
+        inputs:
+          script: dotnet publish "${{variables.Local_ProjectDirectory}}/${{variables.Local_ProjectFileName}}" -f net$(Library_DotNetFrameworkVersion)-ios -c $(Library_Configuration) /p:ApplicationVersion=$(Build.BuildNumber) /p:RuntimeIdentifier=ios-arm64 /p:CodesignKey="$(APPLE_CERTIFICATE_SIGNING_IDENTITY)" /p:signingProvisioningProfileID="$(APPLE_PROV_PROFILE_UUID)"
 
       # Deploy iOS to App Center
       - task: AppCenterDistribute@3
