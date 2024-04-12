@@ -1,8 +1,8 @@
-﻿// using epj.RouteGenerator;
+﻿using epj.RouteGenerator;
 
 namespace WhiteCane.Samples;
 
-// [AutoRoutes("Page")]
+[AutoRoutes("Page")]
 public static class MauiProgram
 {
     public static MauiApp CreateMauiApp()

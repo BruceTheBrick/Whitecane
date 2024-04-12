@@ -6,7 +6,7 @@ using WhiteCane.Platforms;
 
 namespace WhiteCane;
 
-public static class WhiteCane
+public static class WhiteCaneInitializer
 {
     /// <summary>
     /// Initializes the WhiteCane Library
